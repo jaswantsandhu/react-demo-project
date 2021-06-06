@@ -9,7 +9,7 @@ import Cart from "../cart";
 const styles = {
     header : {
         display : "flex",
-        "justify-content" : "space-between"
+        "justifyContent" : "space-between"
     }
 }
 

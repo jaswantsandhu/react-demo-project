@@ -10,12 +10,12 @@ export default function SearchListing() {
             <div className="row">
                 <div className="col-3">
                     <Heading text="Search Results" />
-                    <Text text="170 Stores" />
+                    <Text text={`${Stores.length} Stores`} />
                 </div>
                 <div className="col-9">
-                    { Stores.map((store, index)=>{
-                        return <StoreCard store={store}/>
-                    }) }
+                    {Stores.map((store, index) => {
+                        return <StoreCard store={store} key={store.id}/>
+                    })}
                 </div>
             </div>
         </div>

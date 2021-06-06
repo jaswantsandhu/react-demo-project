@@ -12,7 +12,7 @@ const Stores = [
             isFree : true
         },
         id : 1,
-        images : []
+        images : ["images/dummy-200x200-Spuma.jpeg", "images/dummy-315x560-Eggs.jpeg"]
     },
     {
         name : "Dominos",
@@ -27,7 +27,7 @@ const Stores = [
             isFree : true
         },
         id : 2,
-        images : []
+        images : ["images/dummy-375x500-Lecker.jpeg", "images/dummy-454x280-Spicery.jpeg"]
     },
     {
         name : "Spices",
@@ -42,7 +42,7 @@ const Stores = [
             isFree : false
         },
         id : 3,
-        images : []
+        images : ["images/dummy-540x960-Spreewald.jpeg", "images/dummy-683x1024-KiwiSolo.jpeg"]
     }
 ]
 
