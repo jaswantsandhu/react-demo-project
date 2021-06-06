@@ -1,6 +1,8 @@
 import React from "react";
+import StoreCard from "../../components/store-card";
 import { Heading, Text } from "../../components/ui"
 
+import Stores from "../../mock/search-stores"
 
 export default function SearchListing() {
     return <div className="search-listing">
@@ -10,7 +12,11 @@ export default function SearchListing() {
                     <Heading text="Search Results" />
                     <Text text="170 Stores" />
                 </div>
-                <div className="col-9">Search Items</div>
+                <div className="col-9">
+                    { Stores.map((store, index)=>{
+                        return <StoreCard store={store}/>
+                    }) }
+                </div>
             </div>
         </div>
     </div>
