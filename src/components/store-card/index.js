@@ -1,5 +1,6 @@
 import React from "react";
 import { Heading, Text } from "../ui"
+import PropTypes from "prop-types"
 
 const styles = {
     card: {
@@ -12,9 +13,9 @@ const styles = {
         display: "flex",
         flexDirection: "row"
     },
-    image : {
-        width : "200px",
-        height : "200px"
+    image: {
+        width: "200px",
+        height: "200px"
     }
 }
 
@@ -38,4 +39,8 @@ export default function StoreCard({ store }) {
             </div>
         </div>
     </div>
+}
+
+
+StoreCard.propTypes = {
 }
