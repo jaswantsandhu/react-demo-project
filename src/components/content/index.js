@@ -7,21 +7,22 @@ import { Switch, Route } from "react-router-dom";
 
 export default function Content() {
     return <Switch>
-         <Route path="*">
-            <NotFound></NotFound>
-        </Route>
         <Route exact path="/">
             <div>Home Page</div>
         </Route>
+
         <Route path="/search/stores/:id">
             <StoreDetails></StoreDetails>
         </Route>
+        
         <Route path="/search">
             <SearchListing></SearchListing>
         </Route>
+
         <Route path="*">
             <NotFound></NotFound>
         </Route>
+
     </Switch>
 }
 

@@ -31,7 +31,7 @@ export default function StoreCard({ store }) {
         </ul>}
         <div className="row">
             <div className="col-8">
-                <Link to={`/search/stores/${store.id}`}><Heading text={name} /></Link>
+                <Link to={`/search/stores/${id}`}><Heading text={name} /></Link>
                 <Text text={`${priceRange} | ${desc}`} />
                 <Text text={`${rating.stars} Stars | ${rating.votes} ratings`} />
             </div>
