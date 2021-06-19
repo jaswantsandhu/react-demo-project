@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import StoreCard from "../../components/store-card";
 import { Heading, Text } from "../../components/ui"
+import { getStores } from "../../store/actions/stores"
 
 // import axios from "axios";
 
-function SearchListing({ stores }) {
+function SearchListing({ stores, getStoresWithDispatch }) {
 
     // [ state, setterMethodForState ]
     // const [ stores, setStores ] = useState([])
@@ -18,6 +19,9 @@ function SearchListing({ stores }) {
         // }).catch((error)=>{
         //     console.log("Error", error)
         // })
+
+        getStoresWithDispatch();
+
     }, [])
 
     
@@ -47,4 +51,12 @@ const mapStateToProps = function(state){
     }
 }
 
-export default connect(mapStateToProps)(SearchListing)
+const mapDispatchToProps = function(dispatch){
+    return {
+        getStoresWithDispatch : ()=>{
+            dispatch(getStores())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchListing)

@@ -1,24 +1,22 @@
+import { GET_STORES_ACTION } from "../action-type";
+
 const intialState = {
-    list: [{
-        "name": "Pizza Hut",
-        "priceRange": 3,
-        "desc": "Pizza, Breads, Italian",
-        "rating": {
-            "stars": 4.7,
-            "votes": 4500
-        },
-        "delivery": {
-            "timeRequired": 27,
-            "isFree": true
-        },
-        "id": 1,
-        "images": [
-            "images/dummy-200x200-Spuma.jpeg",
-            "images/dummy-315x560-Eggs.jpeg"
-        ]
-    }],
+    list: [],
 }
 
+// action > { type : STRING, payload : DATA }
 export default function Stores(state = intialState, action) {
-    return state;
+
+    console.log("IN Reducer - Stores")
+    switch (action.type) {
+        case GET_STORES_ACTION: {
+            console.log("IN CASE - GET_STORES_ACTION")
+            const newState = {...state};
+            newState.list = action.payload;
+            return newState;
+        }
+        default: {
+            return state;
+        }
+    }
 }

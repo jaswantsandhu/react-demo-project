@@ -8,5 +8,6 @@ const intialState = {
 
 export default function Cart(state = intialState, action)
     {
+        console.log("IN Reducer - Cart")
         return state;
     }
