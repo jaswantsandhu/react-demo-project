@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import StoreCard from "../../components/store-card";
 import { Heading, Text } from "../../components/ui"
 
-import axios from "axios";
+// import axios from "axios";
 
-export default function SearchListing() {
+function SearchListing({ stores }) {
 
     // [ state, setterMethodForState ]
-    const [ stores, setStores ] = useState([])
+    // const [ stores, setStores ] = useState([])
 
     useEffect(()=>{
         // Promise
-        axios.get("http://localhost:3600/stores")
-        .then((response)=>{
-            setStores(response.data);
-        }).catch((error)=>{
-            console.log("Error", error)
-        })
+        // axios.get("http://localhost:3600/stores")
+        // .then((response)=>{
+        //     setStores(response.data);
+        // }).catch((error)=>{
+        //     console.log("Error", error)
+        // })
     }, [])
 
     
@@ -36,3 +37,14 @@ export default function SearchListing() {
         </div>
     </div>
 }
+
+const mapStateToProps = function(state){
+    console.log(state)
+    // Always return object
+    return {
+        // key will be used as a property 
+        stores : state.stores.list
+    }
+}
+
+export default connect(mapStateToProps)(SearchListing)

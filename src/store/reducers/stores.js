@@ -1,5 +1,5 @@
 const intialState = {
-    stores: [{
+    list: [{
         "name": "Pizza Hut",
         "priceRange": 3,
         "desc": "Pizza, Breads, Italian",
