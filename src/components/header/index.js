@@ -16,7 +16,8 @@ export default function Header({ color, links, time, stopClock }) {
       <Location />
       {/* <Logo />
       <Search />
-      <Cart /> */}
+       */}
+      <Cart />
     </header>
   );
 }

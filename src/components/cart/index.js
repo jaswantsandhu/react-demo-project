@@ -1,10 +1,11 @@
 import React from "react";
-
-const styles = {
-    
-}
+import { shallowEqual, useSelector } from "react-redux";
 
 export default function Cart()
     {
-        return <div className="user-cart">Cart</div>
+        const cart = useSelector((state)=>{
+            return state.cart
+        })
+
+        return <div className="user-cart">Cart ({cart.productsInCarts.length})</div>
     }
