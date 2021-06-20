@@ -1,3 +1,10 @@
 export const GET_STORES_ACTION = "GET_STORES";
-export const GET_STORES_SUCCESS_ACTION = "GET_STORES_SUCCESS"
-export const GET_STORES_FAILURE_ACTION = "GET_STORES_FAILURE"
+export const GET_STOREBYID_ACTION = "GET_STOREBYID";
+
+export function createActionTypes(type) {
+  return {
+    initial: type,
+    success: `${type}_SUCCESS`,
+    failure: `${type}_FAILURE`,
+  };
+}

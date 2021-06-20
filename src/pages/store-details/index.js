@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+
+import { useDispatch, useSelector, shallowEqual, connect } from "react-redux";
 import axios from "axios";
+import { getStoreById } from "../../store/actions/stores"
 
-export default function StoreDetails()
+export default function StoreDetails({ store })
     {
-        const { id } = useParams(); 
-        useEffect(()=>{
-            axios.get(`http://localhost:3600/stores/${id}`).then((response)=>{
-                console.log(response)
-            }).catch((err)=>{
-                console.log(err)
-            })
-        })
+        const params = useParams()
+        const dispatch = useDispatch();
 
-        return <div>Store Details - {id}</div>
+        const selectedStore = useSelector((state)=>{
+            return {
+                store : state.stores.selectedStore
+            }
+        }, shallowEqual)
+
+        useEffect(()=>{
+            getStoreById(params.id)(dispatch);
+        }, [])
+
+        return <div>{JSON.stringify(selectedStore)}</div>
     }
