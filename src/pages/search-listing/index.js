@@ -6,22 +6,11 @@ import { getStores } from "../../store/actions/stores"
 
 // import axios from "axios";
 
-function SearchListing({ stores, getStoresWithDispatch }) {
+function SearchListing({ stores, getStores, isLoading }) {
 
-    // [ state, setterMethodForState ]
-    // const [ stores, setStores ] = useState([])
-
-    useEffect(()=>{
-        // Promise
-        // axios.get("http://localhost:3600/stores")
-        // .then((response)=>{
-        //     setStores(response.data);
-        // }).catch((error)=>{
-        //     console.log("Error", error)
-        // })
-
-        getStoresWithDispatch();
-
+   
+    useEffect(()=>{     
+        getStores("hello");
     }, [])
 
     
@@ -32,11 +21,12 @@ function SearchListing({ stores, getStoresWithDispatch }) {
                     <Heading text="Search Results" />
                     <Text text={`${stores && stores.length} Stores`} />
                 </div>
-                <div className="col-9">
+                {isLoading && <Heading text="Loading..." />}
+                {!isLoading && <div className="col-9">
                     {stores && stores.map((store, index) => {
                         return <StoreCard store={store} key={store.id}/>
                     })}
-                </div>
+                </div>}
             </div>
         </div>
     </div>
@@ -47,16 +37,9 @@ const mapStateToProps = function(state){
     // Always return object
     return {
         // key will be used as a property 
-        stores : state.stores.list
+        stores : state.stores.list,
+        isLoading : state.stores.isLoading,
     }
 }
 
-const mapDispatchToProps = function(dispatch){
-    return {
-        getStoresWithDispatch : ()=>{
-            dispatch(getStores())
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchListing)
+export default connect(mapStateToProps, { getStores })(SearchListing)
