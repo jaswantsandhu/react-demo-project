@@ -1,64 +1,71 @@
 import React from "react";
+import * as Yup from 'yup'; 
+import { Formik } from "formik";
+
+const loginSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email address").required("Required"),
+  password: Yup.string().required("Required"),
+});
 
 export default class AdminLoginPage extends React.Component {
-  state = {
-    form: {
-      email: "",
-      password: "",
-    },
-  };
+  state = {};
 
   constructor(props) {
     super(props);
-    // this.onChangeHandler = this.onChangeHandler.bind(this);
-  }
-
-  onChangeHandler(event) {
-    const newState = { ...this.state };
-    newState.form[event.target.name] = event.target.value;
-    this.setState(newState);
-  }
-
-  onSubmitHandler(event) {
-    event.preventDefault();
-    alert(JSON.stringify(this.state));
   }
 
   render() {
     return (
-      <form
-        onSubmit={(event) => {
-          this.onSubmitHandler(event);
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        // validate={(values) => {
+        //   const errors = {};
+
+        //   if (values.email === "") {
+        //     errors.email = "Email  cannot be blank";
+        //   }
+
+        //   return errors;
+        // }}
+        validationSchema={loginSchema}
+        onSubmit={(values) => {
+          alert(JSON.stringify(values));
         }}
       >
-        <p>
-          <label>Email</label>
-          <input
-            type="text"
-            value={this.state.form.email}
-            onChange={(event) => {
-              this.onChangeHandler(event);
-            }}
-            name="email"
-            placeholder="Enter your email."
-          />
-        </p>
-        <p>
-          <label>Password</label>
-          <input
-            type="password"
-            value={this.state.form.password}
-            onChange={(event) => {
-              this.onChangeHandler(event);
-            }}
-            name="password"
-            placeholder="Enter your password."
-          />
-        </p>
-        <p>
-          <button type="submit">Login</button>
-        </p>
-      </form>
+        {({ handleChange, handleSubmit, values, errors }) => {
+          console.log(errors);
+
+          return (
+            <form onSubmit={handleSubmit}>
+              <p>
+                <label>Email</label>
+                <input
+                  type="text"
+                  value={values.email}
+                  onChange={handleChange}
+                  name="email"
+                  placeholder="Enter your email."
+                />
+                {errors && errors.email && <span className="form-error">{errors.email}</span>}
+              </p>
+              <p>
+                <label>Password</label>
+                <input
+                  type="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  name="password"
+                  placeholder="Enter your password."
+                />
+                {errors && errors.password && <span className="form-error">{errors.password}</span>}
+              </p>
+              <p>
+                <button type="submit">Login</button>
+              </p>
+            </form>
+          );
+        }}
+      </Formik>
     );
   }
 }
