@@ -4,6 +4,7 @@ import StoreDetails from "../../pages/store-details";
 import NotFound from "../../pages/not-found";
 import AdminAddProduct from "../../pages/admin/add-products";
 import  LoginAuth from "../login-auth";
+import AdminLoginPage from "../../pages/admin/login"
 
 import { Switch, Route } from "react-router-dom";
 
@@ -26,10 +27,8 @@ export default function Content() {
                 <AdminAddProduct></AdminAddProduct>
             </LoginAuth>
         </Route>
-        <Route path="/admin/search-product">
-            <LoginAuth roles={["admin"]}>
-                <AdminAddProduct></AdminAddProduct>
-            </LoginAuth>
+        <Route path="/admin/login">
+            <AdminLoginPage></AdminLoginPage>
         </Route>
 
         <Route path="*">
