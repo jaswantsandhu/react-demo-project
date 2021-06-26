@@ -2,6 +2,8 @@ import React from "react";
 import SearchListing from "../../pages/search-listing"
 import StoreDetails from "../../pages/store-details";
 import NotFound from "../../pages/not-found";
+import AdminAddProduct from "../../pages/admin/add-products";
+import  LoginAuth from "../login-auth";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -17,6 +19,17 @@ export default function Content() {
         
         <Route path="/search">
             <SearchListing></SearchListing>
+        </Route>
+
+        <Route path="/admin/add-product">
+            <LoginAuth roles={["admin", "sales"]}>
+                <AdminAddProduct></AdminAddProduct>
+            </LoginAuth>
+        </Route>
+        <Route path="/admin/search-product">
+            <LoginAuth roles={["admin"]}>
+                <AdminAddProduct></AdminAddProduct>
+            </LoginAuth>
         </Route>
 
         <Route path="*">
