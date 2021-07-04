@@ -32,9 +32,9 @@ export default function Content() {
       </Route>
 
       <Route path="/admin/add-product">
-        <LoginAuth roles={["admin", "sales"]}>
+        {/* <LoginAuth roles={["admin", "sales"]}> */}
           <AdminAddProduct></AdminAddProduct>
-        </LoginAuth>
+        {/* </LoginAuth> */}
       </Route>
       <Route path="/admin/login">
         <AdminLoginPage></AdminLoginPage>
