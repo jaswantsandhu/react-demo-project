@@ -12,6 +12,10 @@ export default function Menu() {
         <li>
           <Link to="/search">Search</Link>
         </li>
+
+        <li>
+          <Link to="/admin/add-product">Add Product</Link>
+        </li>
       </ul>
     </div>
   );

@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "email": "abc@xyz.com",
+      "password": "$2a$10$b0Bqc.r/KWn8tOgXnHa1Fe5EDadO6Qmu/T/EK5z5u4h5ZAZSlH17u",
+      "id": 1
+    }
+  ],
   "stores": [
     {
       "name": "Pizza Hut",
@@ -22,19 +29,19 @@
           "name": "Cheese Pizza",
           "price": 100,
           "size": "medium",
-          "id" : "1"
+          "id": "1"
         },
         {
           "name": "Vegan Pizza",
           "price": 75,
           "size": "small",
-          "id" : "2"
+          "id": "2"
         },
         {
           "name": "Pasta",
           "price": 150,
           "size": "large",
-          "id" : "3"
+          "id": "3"
         }
       ]
     },

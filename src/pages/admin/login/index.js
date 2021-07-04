@@ -1,13 +1,15 @@
 import React from "react";
-import * as Yup from 'yup'; 
+import * as Yup from "yup";
 import { Formik } from "formik";
+import { connect } from "react-redux";
+import { loginUser } from "../../../store/actions/user";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string().required("Required"),
 });
 
-export default class AdminLoginPage extends React.Component {
+class AdminLoginPage extends React.Component {
   state = {};
 
   constructor(props) {
@@ -29,12 +31,10 @@ export default class AdminLoginPage extends React.Component {
         // }}
         validationSchema={loginSchema}
         onSubmit={(values) => {
-          alert(JSON.stringify(values));
+          this.props.loginUser(values);
         }}
       >
         {({ handleChange, handleSubmit, values, errors }) => {
-          console.log(errors);
-
           return (
             <form onSubmit={handleSubmit}>
               <p>
@@ -46,7 +46,9 @@ export default class AdminLoginPage extends React.Component {
                   name="email"
                   placeholder="Enter your email."
                 />
-                {errors && errors.email && <span className="form-error">{errors.email}</span>}
+                {errors && errors.email && (
+                  <span className="form-error">{errors.email}</span>
+                )}
               </p>
               <p>
                 <label>Password</label>
@@ -57,7 +59,9 @@ export default class AdminLoginPage extends React.Component {
                   name="password"
                   placeholder="Enter your password."
                 />
-                {errors && errors.password && <span className="form-error">{errors.password}</span>}
+                {errors && errors.password && (
+                  <span className="form-error">{errors.password}</span>
+                )}
               </p>
               <p>
                 <button type="submit">Login</button>
@@ -69,3 +73,5 @@ export default class AdminLoginPage extends React.Component {
     );
   }
 }
+
+export default connect(null, { loginUser })(AdminLoginPage);
