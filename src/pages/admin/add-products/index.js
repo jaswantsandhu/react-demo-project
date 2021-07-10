@@ -6,7 +6,11 @@ import Table from "react-bootstrap/Table";
 import { Formik } from "formik";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addNewProduct, getProductsForHomepage } from "../../../store/actions/products";
+import {
+  addNewProduct,
+  getProductsForHomepage,
+  deleteProduct,
+} from "../../../store/actions/products";
 
 export default function AdminAddProduct() {
   const dispatch = useDispatch();
@@ -16,10 +20,13 @@ export default function AdminAddProduct() {
     };
   });
 
-  useEffect(()=>{
+  useEffect(() => {
     getProductsForHomepage()(dispatch);
-  }, [])
+  }, []);
 
+  function handleDeleteProduct(id) {
+    deleteProduct(id)(dispatch);
+  }
 
   return (
     <div className="container">
@@ -123,10 +130,11 @@ export default function AdminAddProduct() {
                     <tr>
                       <td>{product.name}</td>
                       <td>{product.price}</td>
-                      <td><Button onClick={()=>{
-                          // ACTION
-                          // deleteProduct(product._id)
-                      }}>❌</Button></td>
+                      <td>
+                        <Button onClick={()=>{
+                          handleDeleteProduct(product._id)
+                        }}>❌</Button>
+                      </td>
                     </tr>
                   );
                 })}
