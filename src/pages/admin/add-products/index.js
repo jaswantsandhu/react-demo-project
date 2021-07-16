@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
@@ -19,6 +19,8 @@ export default function AdminAddProduct() {
       products: state.products.products,
     };
   });
+
+  const [uploadFile, setUploadFile] = useState(null)
 
   useEffect(() => {
     getProductsForHomepage()(dispatch);
@@ -44,7 +46,7 @@ export default function AdminAddProduct() {
             //   return errors;
             // }}
             onSubmit={(values, { resetForm }) => {
-              addNewProduct(values)(dispatch);
+              addNewProduct(values, uploadFile)(dispatch);
               resetForm({});
             }}
           >
@@ -72,17 +74,7 @@ export default function AdminAddProduct() {
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="image">
-                    <Form.Label>Product Image</Form.Label>
-                    <Form.Control
-                      onChange={handleChange}
-                      type="text"
-                      placeholder="path to image."
-                      name="image"
-                      value={values.image}
-                    />
-                  </Form.Group>
-
+  
                   <Form.Group controlId="price">
                     <Form.Label>Product Price</Form.Label>
                     <Form.Control
@@ -102,6 +94,18 @@ export default function AdminAddProduct() {
                       placeholder="Upto 5"
                       name="rating"
                       value={values.rating}
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="rating">
+                    <Form.Label>Product Image</Form.Label>
+                    <Form.Control
+                      onChange={(event)=>{
+                        setUploadFile(event.target.files[0])
+                      }}
+                      type="file"
+                      name="image"
+                      value={values.image}
                     />
                   </Form.Group>
 
