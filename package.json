@@ -28,7 +28,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev-api": "json-server --watch ./mock/db.json --port 3600 -m ./node_modules/json-server-auth"
+    "dev-api": "json-server --watch ./mock/db.json --port 3600 -m ./node_modules/json-server-auth",
+    "cypress" : "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^8.0.0",
     "json-server": "^0.16.3",
     "json-server-auth": "^2.0.2"
   }
